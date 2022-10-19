@@ -1,0 +1,22 @@
+Get a random Pokemon from Pokemon API
+Show its image
+Show a multiple choice box of 3 or 4 other Pokemon 
+User has to click the correct one
+If correct, score + 1, games played + 1
+If incorrect, no score, games played + 1
+    Show games played vs score 
+Win state? dunno yet
+
+
+Choices:
+    In a list (of buttons?)
+    Picked at random from API with a function
+    Use the function to store choices/answers in an array
+        The correct answer is stored first in the array, the rest are pushed
+        Results need to be randomised
+
+TODO:
+Don't hammer the API
+Fix whatever that bug was when it couldn't find a file
+CSSSSSSSSSSSS
+Player feedback on whether they got it right or not rather than just updating scores
