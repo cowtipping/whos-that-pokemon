@@ -4,94 +4,69 @@ const score = {
     wins: 0
 }
 
+// pause for ms milliseconds
+function delay(ms){
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
+
 // Pick a random Pokemon from 1 to 904
 function randomPokemon() {
-    return Math.floor(Math.random() * 904) + 1;
+    return Math.floor(Math.random() * 904)+1;
 }
 
 // Update scoreboard
 function updateScore() {
-    let scoreText = document.querySelector(".scoreboard > p:nth-child(2)");
+    let scoreText = document.querySelector(".choice > p:nth-child(1)");
     scoreText.textContent = "Games Played: " + score.gamesPlayed;
-    let winsText = document.querySelector(".scoreboard > p:nth-child(3)");
+    let winsText = document.querySelector(".choice > p:nth-child(2)");
     winsText.textContent = "Wins: " + score.wins;
 };
 
-// Get Pokemon from API
-/*
-async function getPokemonAPI() {
-
-    let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokemon[0] + "/");
-    let data = await response.json();
-
-    // Get its name and sprite
-    let pokemonName = data.name;
-    let pokemonSprite = data.sprites.front_default;
-    console.log("Name: " + pokemonName);
-    console.log("Sprite url: " + pokemonSprite);
-
-    let card1Sprite = document.querySelector("#card1-sprite");
-    let imgTag = document.createElement("img");
-    imgTag.src = pokemonSprite; // add the src link
-    imgTag.alt = pokemonName.toString(); // give it an alt tag
-    imgTag.classList.add("sprite"); // add a class of 'sprite'
-    card1Sprite.appendChild(imgTag)
-
-}
-*/
-
 async function showPokemon() {
-    // Start array of Pokemon and assign the correct answer (by ID number)
     let pokemon = [];
-    pokemon[0] = randomPokemon();
-    let correctPokemon = pokemon[0];
-
-    // Fetch correct Pokemon from API
-    let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + correctPokemon + "/");
-    let data = await response.json();
-
-    // Get the winning Pokemon's name
-    //let pokemonName = data.name;
-
-    // Get correct Pokemon's sprite url 
-    let pokemonSprite = data.sprites.front_default;
-
     // Add other possible answers as an array of ID numbers
+    //TODO: Filter dupes
     for (let i = 0; i<3; i++) {
         pokemon.push(randomPokemon());
     }
-    console.log("Pokemon numbers: " + pokemon);
-    console.log("Correct mon: " + data.name);
+    // add correct Pokemon to start of array
+    pokemon.unshift(randomPokemon())
+    let correctPokemon = pokemon[0]
 
-    // Shuffle the array
+    // Fetch sprites for correct Pokemon from API
+            let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + correctPokemon + "/");
+            let data = await response.json();
+    // Get get its HQ sprite url 
+            let pokemonSprite = data.sprites.other.home.front_default;
+
+    // Shuffle the array so the correct one isn't always shown first
     // Source: https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
     let randomisedPokemon = pokemon
     .map(value => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value)
 
-    ////// Show the Pokemon sprite //////
-    let pokemonPic = document.querySelector(".pokemon-pic img");
-    pokemonPic.src = pokemonSprite;
-    pokemonPic.append();
+    // Show the Pokemon sprite //
+            let pokemonPic = document.querySelector(".pokemon-pic img:nth-child(2)");
+            pokemonPic.src = pokemonSprite;
+            pokemonPic.append();
 
-    ////// Show possible answers //////
+    // Show possible answers //
     // Create buttons
-    let choiceList = document.querySelector(".your-choices");
+    let choiceList = document.querySelector(".choice");
     for (let i in randomisedPokemon) {
         // Assign new variable so button class matches Pokemon number 
         let pokemonNumber = randomisedPokemon[i];
         // Add button
         let choices = document.createElement("button");
-        //choiceList.appendChild(choices).textContent = pokemonNumber;
-        // Get data from API
-        let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + pokemonNumber + "/");
-        let data = await response.json();
+
         // Get name and add as button text 
-        let pokemonName = data.name;
+        let pokemonName = pokeData[pokemonNumber].name;
         choiceList.appendChild(choices).textContent = pokemonName;
         // Add ID number as class
-        choices.classList.add(pokemonNumber);
+        choices.classList.add("poke"+pokemonNumber);
     }
 
     // Get clicked button
@@ -103,20 +78,33 @@ async function showPokemon() {
       });
 
     // If the class text (number) matches the correct Pokemon number - score point
-    function checkButton(clicked) {
-        if (clicked == correctPokemon) {
+    // function is async otherwise the delay function won't work 
+    async function checkButton(clicked) {
+        // there was some issue with selecting classes starting with digits, which is why I did this nonsense
+        const clickedButton = clicked.replace('poke', '');
+        if (clickedButton == correctPokemon) {
             score.wins++;
+            const btn = document.querySelector("button."+clicked);
+            // change button text and add a new class to the button if you got it right
+            btn.textContent = "Correct!"
+            btn.classList.add("winner")
         } else {
+            const btn = document.querySelector("button."+clicked);
+            // change button text and add a new class to the button if you got it right
+            btn.textContent = "Nope!"
+            btn.classList.add("loser")
         }
         score.gamesPlayed++;
         updateScore();
+        await delay(1000);
         deleteButtons();
         showPokemon();
     }
 
+    //TODO: Make placeholder buttons to replace this crap
     function deleteButtons() {
-        let choiceList = document.querySelector(".your-choices");
-        for (let i in pokemon) {
+        let choiceList = document.querySelector(".choice");
+        for (i in pokemon) {
             let choices = document.querySelector("button");
             choiceList.removeChild(choices);
         }
