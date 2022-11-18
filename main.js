@@ -34,8 +34,6 @@ async function showPokemon() {
     // add correct Pokemon to start of array
     pokemon.unshift(randomPokemon())
     let correctPokemon = pokemon[0]
-    console.log("Pokemon numbers: " + pokemon);
-    console.log("Correct mon: " + correctPokemon + pokeData[correctPokemon].name);
 
     // Fetch sprites for correct Pokemon from API
             let response = await fetch("https://pokeapi.co/api/v2/pokemon/" + correctPokemon + "/");
