@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Who's That Pokemon?">
+    <meta name="author" content="Adie Nunn">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <script src="data.js" defer></script>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="styles.css"></link>
     <title>Who's That Pokemon?</title>
@@ -12,23 +18,25 @@
     <header>
         <h1>Who's That Pokemon?</h1>
     </header>
-    <section>
-        <h2>Guess the correct Pokemon. Win prizes*</h2>
-    </section>
-    <main>
-        <div class="pokemon-pic"><p>Who dis?</p>
-            <img alt="Picture of a Pokemon" />
-        </div>
-        <div class="choice"><p>Your choice:</p>
-            <div class="your-choices"></div>
-        </div>
-        <div class="scoreboard"><h3>Scores:</h3>
-            <p></p>
-            <p></p>
-        </div>
-    </main>
+    <div class="container">
+        <section>
+            <h2>Name the correct Pokemon! Win phat points!</h2>
+        </section>
+        <main>
+            <div class="pokemon-pic">
+                <img alt="background" src="template.webp" />
+                <img alt="A Pokemon" /> <!-- src="temp.png" -->
+            </div>
+            <div class="choice">
+                <p class="played"></p>
+                <p class="wins"></p>
+                <p class="credits">site by adie nunn. <a href="https://www.linkedin.com/in/adie-nunn-390777158/">linkedin</a>
+                <a href="https://github.com/cowtipping">github</a> <a href="http://cowtipping.co.uk">portfolio</a></p>
+            </div>
+        </main>
+    </div>
     <footer>
-        <p>footer text</p>
+        <p>This is a fan project and all this Pokemon stuff belongs to Nintendo.</p>
     </footer>
 </body>
 </html>
