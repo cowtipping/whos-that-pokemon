@@ -11,9 +11,10 @@ function delay(ms){
     });
 }
 
-// Pick a random Pokemon from 1 to 904
+// Pick a random Pokemon from 1 to 890 (fix pending for getting Arceus sprites)
 function randomPokemon() {
-    return Math.floor(Math.random() * 904)+1;
+    // return Math.floor(Math.random() * 904)+1;
+    return Math.floor(Math.random() * 890)+1;
 }
 
 // Update scoreboard
