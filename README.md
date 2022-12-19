@@ -16,6 +16,9 @@ This was a project made early into my bootcamp at [School Of Code](https://www.s
 I revisted those topics a few weeks later as a little refresher side-project.
 ## Patch Notes
 
+19.Dec.22  
+Fixed getting duplicate Pokemon in answers.
+
 8.Dec.22  
 Added patch notes. 🤣  
 Updated visuals for smaller devices. Fixed some jank in the JS.
