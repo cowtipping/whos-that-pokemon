@@ -11,12 +11,6 @@ function delay(ms) {
   });
 }
 
-// Pick a random Pokemon from 1 to 890 (fix pending for getting Arceus sprites)
-function randomPokemon() {
-  // return Math.floor(Math.random() * 904)+1;
-  return Math.floor(Math.random() * 890) + 1;
-}
-
 // Update scoreboard
 function updateScore() {
   let scoreText = document.querySelector(".choice > p:nth-child(1)");
@@ -26,14 +20,19 @@ function updateScore() {
 }
 
 async function showPokemon() {
+  // Add possible answers as an array of ID numbers
+  // While pokemon array doesn't include the value and the length of the array is < 4, add pokemon to it
+  // Pick a random Pokemon from 1 to 890 (fix pending for getting Arceus sprites)
+      // old value - (Math.random() * 904)+1;
   let pokemon = [];
-  // Add other possible answers as an array of ID numbers
-  //TODO: Filter dupes
-  for (let i = 0; i < 3; i++) {
-    pokemon.push(randomPokemon());
+  while (pokemon.length < 4) {
+    var randomPokemon = Math.floor(Math.random() * 890) + 1;
+    if (!pokemon.includes(randomPokemon)) {
+      pokemon.push(randomPokemon);
+    }
   }
-  // Add correct Pokemon to start of array
-  pokemon.unshift(randomPokemon());
+
+   // Make the the correct Pokemon be the one at index 0
   let correctPokemon = pokemon[0];
 
   // Fetch sprites for correct Pokemon from API
@@ -111,3 +110,5 @@ async function showPokemon() {
 
 updateScore();
 showPokemon();
+
+//export {randomPokemon, showPokemon}
