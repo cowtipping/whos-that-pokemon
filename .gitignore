@@ -2,3 +2,8 @@ designdoc.txt
 pokemon.json
 temp.png
 test.js
+node_modules
+package-lock.json
+package.json
+new.css
+__tests__
