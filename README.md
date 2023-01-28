@@ -16,6 +16,9 @@ This was a project made early into my bootcamp at [School Of Code](https://www.s
 I revisted those topics a few weeks later as a little refresher side-project.
 ## Patch Notes
 
+28.Jan.23  
+Moved image and answers to be side-by-side on larger screens.  
+
 19.Dec.22  
 Fixed getting duplicate Pokemon in answers.
 
