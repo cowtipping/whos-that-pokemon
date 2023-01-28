@@ -13,9 +13,9 @@ function delay(ms) {
 
 // Update scoreboard
 function updateScore() {
-  let scoreText = document.querySelector(".choice > p:nth-child(1)");
+  let scoreText = document.querySelector(".score-container > .played");
   scoreText.textContent = "Games Played: " + score.gamesPlayed;
-  let winsText = document.querySelector(".choice > p:nth-child(2)");
+  let winsText = document.querySelector(".score-container > .wins");
   winsText.textContent = "Wins: " + score.wins;
 }
 
@@ -51,7 +51,7 @@ async function showPokemon() {
     .map(({ value }) => value);
 
   // Show the Pokemon sprite
-  let pokemonPic = document.querySelector(".pokemon-pic img:nth-child(2)");
+  let pokemonPic = document.querySelector(".pokemon-pic-container img:nth-child(2)");
   pokemonPic.src = pokemonSprite;
   pokemonPic.append();
 
