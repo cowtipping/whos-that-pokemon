@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Who's That Pokemon?">
-    <meta name="author" content="Adie Nunn">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Who's That Pokemon?" />
+    <meta name="author" content="Adie Nunn" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
     <script src="data.js" defer></script>
     <script src="main.js" defer></script>
-    <link rel="stylesheet" href="styles.css"></link>
+    <link rel="stylesheet" href="styles.css" />
     <title>Who's That Pokemon?</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Who's That Pokemon?</h1>
+      <h1>Who's That Pokemon?</h1>
+      <h2>Name the correct Pokemon! Win phat points!</h2>
     </header>
     <div class="container">
-        <section>
-            <h2>Name the correct Pokemon! Win phat points!</h2>
-        </section>
-        <main>
-            <div class="pokemon-pic">
-                <img alt="background" src="template.webp" />
-                <img alt="A Pokemon" /> <!-- src="temp.png" -->
-            </div>
-            <div class="choice">
-                <p class="played"></p>
-                <p class="wins"></p>
-                <p class="credits">site by adie nunn. <a href="https://www.linkedin.com/in/adienunn">linkedin</a>
-                <a href="https://github.com/cowtipping">github</a> <a href="http://cowtipping.co.uk">portfolio</a></p>
-            </div>
-        </main>
+      <main>
+        <div class="pokemon-pic-container">
+          <img alt="background" src="template.webp" class="background-img" />
+          <img alt="A Pokemon" class="pokemon-pic" />
+          <!-- src="temp.png" -->
+        </div>
+        <div class="choice">
+          <div class="score-container">
+            <p class="wins"></p>
+            <p class="played"></p>
+          </div>
+        </div>
+      </main>
     </div>
     <footer>
-        <p>This is a fan project and all this Pokemon stuff belongs to Nintendo.</p>
+      <p class="credits">
+        site by adie nunn.
+        <a href="https://www.linkedin.com/in/adienunn">linkedin</a>
+        <a href="https://github.com/cowtipping">github</a>
+        <a href="http://cowtipping.co.uk">portfolio</a>
+      </p>
+      <p>
+        This is a fan project and all this Pokemon stuff belongs to Nintendo.
+      </p>
     </footer>
-</body>
+  </body>
 </html>
